@@ -1,1 +1,2 @@
 C:\Users\yeowo\Desktop\DataStruct\x64\Debug\DataStruct.exe
+C:\Users\yeowo\Desktop\study4\DataStruct\x64\Debug\DataStruct.exe
