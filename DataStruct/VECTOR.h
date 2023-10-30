@@ -37,6 +37,18 @@ public :
 		bufferPointer[size++] = data;
 	}
 
+	void PopBack()
+	{
+		if (size > 0)
+		{
+			cout << "Vector is Empty" << endl;
+		}
+		else
+		{
+			bufferPointer[--size] = NULL;
+		}
+	}
+
 	void Resize(int newSize)
 	{
 		// 1. capacity에 새로운 size 값을 설정합니다.
@@ -66,6 +78,29 @@ public :
 		bufferPointer = tempBuffer;
 	}
 
-	~VECTOR(){}
+	void Reserve(int newSize)
+	{
+		if (newSize < capacity)
+		{
+			return;
+		}
+
+		Resize(newSize);
+	}
+
+	T& operator [](const int& count)
+	{
+		return bufferPointer[count];
+	}
+
+	int& Size()
+	{
+		return size;
+	}
+
+	~VECTOR()
+	{
+		delete[] bufferPointer;
+	}
 
 };
