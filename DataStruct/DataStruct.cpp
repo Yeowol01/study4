@@ -3,19 +3,18 @@
 
 using namespace std;
 
-int* ptr = nullptr;
-
-void Function(int* x = ptr)
-{
-
-}
-
 int main()
 {
-	Function();
-
 	BinarySearchTree<int> bst;
-	bst.Insert(1, bst.GetRoot());
+
+	bst.rootNode = bst.Insert(10, bst.rootNode);
+
+	bst.Insert(5, bst.rootNode);
+	bst.Insert(15, bst.rootNode);
+
+	cout << bst.FindMax(bst.rootNode) << endl;
+
+	bst.Inorder(bst.GetRoot());
 
 	return 0;
 }
