@@ -12,6 +12,29 @@ private :
 	T heapBuffer[SIZE];
 	int index;
 
+	void MaxHeapify(int rootIndex)
+	{
+		int largest = rootIndex;
+		int leftChild = 2 * rootIndex;
+		int rightChild = 2 * rootIndex + 1;
+
+		if (leftChild <= index && heapBuffer[leftChild] > heapBuffer[largest])
+		{
+			largest = leftChild;
+		}
+
+		if (rightChild <= index && heapBuffer[rightChild] > heapBuffer[largest])
+		{
+			largest = rightChild;
+		}
+
+		if (largest != rootIndex)
+		{
+			swap(heapBuffer[rootIndex], heapBuffer[largest]);
+			MaxHeapify(largest);
+		}
+	}
+
 public : 
 	MaxHeap()
 	{
@@ -50,6 +73,78 @@ public :
 
 	}
 
+	T& Delete()
+	{
+		// 1. Heap이 비어있다면 프로그램을 종료합니다.
+		if (index <= 0)
+		{
+			cout << "Heap is Empty" << endl;
+			exit(1);
+		}
+
+		// 2. 임신 변수 <- 가장 큰 값을 보관하는 역할
+		T result = heapBuffer[1];
+
+		// 3. index로 가리키는 배열의 값을 첫 번째 원소에 넣어줍니다.
+		heapBuffer[1] = heapBuffer[index];
+
+		// 4. index로 가리키는 배열의 값을 초기화합니다.
+		heapBuffer[index] == NULL;
+
+		// 5. index의 값을 감소시킵니다.
+		index--;
+
+		int parent = 1;
+
+		while (parent * 2 <= index)
+		{
+			int child = parent * 2;
+
+			// 오른쪽 자식의 노드가 클 때
+			if (heapBuffer[child] <= heapBuffer[child] + 1)
+			{
+				child++;
+			}
+
+			// 부모 노드의 Key 값이 자식 노드의 Key 값보다 크다면 반복을 종료합니다.
+			if (heapBuffer[child] < heapBuffer[parent])
+			{
+				break;
+			}
+
+			swap(heapBuffer[parent], heapBuffer[child]);
+			parent = child;
+		}
+
+		return result;
+	}
+
+	/*
+	void DeleteMax()
+	{
+		if (IsEmpty())
+		{
+			cout << "MaxHeap is Empty" << endl;
+			return;
+		}
+
+		// 루트 노드와 마지막 노드를 교환
+		swap(heapBuffer[1], heapBuffer[index]);
+
+		// 루트 노드를 제거
+		heapBuffer[index] = NULL;
+		index--;
+
+		// 최대 힙 속성을 유지하도록 루트에서부터 조정
+		MaxHeapify(1);
+	}
+	*/
+
+	bool IsEmpty()
+	{
+		return (index == 0);
+	}
+	
 	bool IsFull()
 	{
 		if (index == SIZE - 1)

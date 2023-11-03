@@ -12,7 +12,13 @@ int main()
     maxHeap.Insert(31);
     maxHeap.Insert(55);
 
+    // maxHeap.DeleteMax();
+
+    cout << maxHeap.Delete() << endl;
+    cout << maxHeap.Delete() << endl;
     maxHeap.Display();
+ 
+
 
     return 0;
 }
