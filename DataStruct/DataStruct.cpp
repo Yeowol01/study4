@@ -1,24 +1,11 @@
-﻿#include "MaxHeap.h"
+﻿#include <iostream>
+#include "HashTable.h"
 
 using namespace std;
 
 int main()
 {
-    MaxHeap<int> maxHeap;
-
-    maxHeap.Insert(30);
-    maxHeap.Insert(40);
-    maxHeap.Insert(15);
-    maxHeap.Insert(31);
-    maxHeap.Insert(55);
-
-    // maxHeap.DeleteMax();
-
-    cout << maxHeap.Delete() << endl;
-    cout << maxHeap.Delete() << endl;
-    maxHeap.Display();
- 
-
+    std::cout << typeid(const char*).name() << std::endl;
 
     return 0;
 }
